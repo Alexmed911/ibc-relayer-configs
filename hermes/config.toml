@@ -1,0 +1,90 @@
+[global]
+log_level = "info"
+
+[mode.clients]
+enabled = true
+refresh = true
+misbehaviour = true
+
+[mode.connections]
+enabled = false
+
+[mode.channels]
+enabled = false
+
+[mode.packets]
+enabled = true
+clear_interval = 100
+clear_on_start = true
+tx_confirmation = true
+
+[telemetry]
+enabled = true
+host = "127.0.0.1"
+port = 3001
+
+[[chains]]
+id = "cosmoshub-4"
+rpc_addr = "http://localhost:26657"
+grpc_addr = "http://localhost:9090"
+event_source = { mode = "push", url = "ws://localhost:26657/websocket", batch_delay = "500ms" }
+rpc_timeout = "15s"
+account_prefix = "cosmos"
+key_name = "relayer"
+key_store_type = "Test"
+store_prefix = "ibc"
+default_gas = 100000
+max_gas = 400000
+gas_price = { price = 0.025, denom = "uatom" }
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 180000
+clock_drift = "5s"
+max_block_time = "30s"
+trusting_period = "14days"
+trust_threshold = { numerator = "1", denominator = "3" }
+memo_prefix = "STIGGA Relayer"
+
+[[chains]]
+id = "osmosis-1"
+rpc_addr = "http://localhost:26667"
+grpc_addr = "http://localhost:9091"
+event_source = { mode = "push", url = "ws://localhost:26667/websocket", batch_delay = "500ms" }
+rpc_timeout = "15s"
+account_prefix = "osmo"
+key_name = "relayer"
+key_store_type = "Test"
+store_prefix = "ibc"
+default_gas = 300000
+max_gas = 1500000
+gas_price = { price = 0.0025, denom = "uosmo" }
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 180000
+clock_drift = "15s"
+max_block_time = "10s"
+trusting_period = "10days"
+trust_threshold = { numerator = "1", denominator = "3" }
+memo_prefix = "STIGGA Relayer"
+
+[[chains]]
+id = "pacific-1"
+rpc_addr = "http://localhost:26677"
+grpc_addr = "http://localhost:9092"
+event_source = { mode = "push", url = "ws://localhost:26677/websocket", batch_delay = "500ms" }
+rpc_timeout = "15s"
+account_prefix = "sei"
+key_name = "relayer"
+key_store_type = "Test"
+store_prefix = "ibc"
+default_gas = 200000
+max_gas = 800000
+gas_price = { price = 0.02, denom = "usei" }
+gas_multiplier = 1.2
+max_msg_num = 30
+max_tx_size = 180000
+clock_drift = "5s"
+max_block_time = "10s"
+trusting_period = "14days"
+trust_threshold = { numerator = "1", denominator = "3" }
+memo_prefix = "STIGGA Relayer"
